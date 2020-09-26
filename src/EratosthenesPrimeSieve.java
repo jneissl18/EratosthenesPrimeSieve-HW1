@@ -39,4 +39,21 @@ public class EratosthenesPrimeSieve implements PrimeSieve {
         }
         primzahlen.addAll(zahlen);
     }
+
+    public void splitInSummands() {
+        int first = -1, second = -1;
+
+        for (int i = 4; i <= upper; i += 2) { //Loop through all even numbers <= upper
+            for (int j = i - 2; j >= 2; j--) { //Find the biggest prime number in i so there is at least a little bit of variation in the summands and it's not just 3+(i-3)
+                if (isPrime(j)) {
+                    first = i - j;
+                    second = j;
+
+                    break;
+                }
+            }
+
+            System.out.println("Prime summands for " + i + ": " + first + " + " + second + " = " + i);
+        }
+    }
 }
